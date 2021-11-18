@@ -4,22 +4,22 @@
 #include <time.h>
 #include <windows.h>
 
-#define D double					//ÆíÀÇ
-#define SIZE 40						//Å©±â
-#define SIZE_SQUARED SIZE * SIZE	//Å©±âÀÇ Á¦°ö
-#define SEED_MIN 0					//seed ÃÖ¼Ú°ª
-#define SEED_MAX 10					//seed ÃÖ´ñ°ª
-#define NUM_MAX	1000				//º¯·®ÀÇ ÃÖ´ñ°ª
+#define D double					//í¸ì˜
+#define SIZE 40						//ëª¨ì§‘ë‹¨ í¬ê¸°ì˜ ë£¨íŠ¸
+#define SIZE_SQUARED SIZE * SIZE	//ëª¨ì§‘ë‹¨ì˜ í¬ê¸°
+#define SEED_MIN 0					//seed ìµœì†Ÿê°’
+#define SEED_MAX 10					//seed ìµœëŒ“ê°’
+#define NUM_MAX	1000				//ë³€ëŸ‰ì˜ ìµœëŒ“ê°’
 
 double least[2];
 double largest[2];
 
 D root(D num)
 	{
-		int IDV = -1; //Increase Decrease Variable Áõ°¨ º¯¼ö, 0ÀÌ¸é °¨¼Ò, 1ÀÌ¸é Áõ°¡. ÀÌÀü¿¡ ¾î´À Á¶°Ç¿¡ µé¾î°¬´ÂÁö È®ÀÎÇÑ´Ù.
-		D m = 1; //a¿¡ »¬ º¯¼ö
-		D a = 1; //Á¦°ö±ÙÀÌ µÉ º¯¼ö
-		D aa; //aÀÇ Á¦°ö
+		int IDV = -1; //Increase Decrease Variable ì¦ê° ë³€ìˆ˜, 0ì´ë©´ ê°ì†Œ, 1ì´ë©´ ì¦ê°€. ì´ì „ì— ì–´ëŠ ì¡°ê±´ì— ë“¤ì–´ê°”ëŠ”ì§€ í™•ì¸í•œë‹¤.
+		D m = 1; //aì— ëº„ ë³€ìˆ˜
+		D a = 1; //ì œê³±ê·¼ì´ ë  ë³€ìˆ˜
+		D aa; //aì˜ ì œê³±
 
 		if (num == 0)
 		{
@@ -55,13 +55,13 @@ D root(D num)
 
 		return a;
 	}
-	//·çÆ® ÇÔ¼ö
+	//ë£¨íŠ¸ í•¨ìˆ˜
 
 D squared(D num)
 	{
 		return num * num;
 	}
-	//Á¦°ö ÇÔ¼ö
+	//ì œê³± í•¨ìˆ˜
 
 D sum_arr(D * arr, double size)
 	{
@@ -74,22 +74,22 @@ D sum_arr(D * arr, double size)
 
 		return num;
 	}
-	//¹è¿­ÀÇ ÃÑÇÕ ÇÔ¼ö
+	//ë°°ì—´ì˜ ì´í•© í•¨ìˆ˜
 
 D* population(int seed)
 	{
-		D* arr = (D*)malloc(sizeof(D) * (SIZE_SQUARED + 1));//¸ğÁı´Ü. ¸¶Áö¸· ¿ä¼Ò´Â size
+		D* arr = (D*)malloc(sizeof(D) * (SIZE_SQUARED + 1));//ëª¨ì§‘ë‹¨. ë§ˆì§€ë§‰ ìš”ì†ŒëŠ” size
 		int a = 0;
 		if (arr)
 		{
 			arr[SIZE_SQUARED] = 0;
 		}
 
-		srand(seed);//seed·Î ÃÊ±âÈ­
+		srand(seed);//seedë¡œ ì´ˆê¸°í™”
 
-		if (arr)//NULL Ã¼Å©
+		if (arr)//NULL ì²´í¬
 		{
-			for (int i = 0; i < SIZE_SQUARED; i++)//¸ğÁı´Ü º¯·® »ı¼º
+			for (int i = 0; i < SIZE_SQUARED; i++)//ëª¨ì§‘ë‹¨ ë³€ëŸ‰ ìƒì„±
 			{
 				a = rand() % NUM_MAX;
 				arr[i] = (double)a;
@@ -99,13 +99,13 @@ D* population(int seed)
 
 		return arr;
 	}
-	//¸ğÁı´Ü »ı¼º ÇÔ¼ö
+	//ëª¨ì§‘ë‹¨ ìƒì„± í•¨ìˆ˜
 
 D standard_deviation(D * arr, double size, int seed)
 	{
-		D m = 0;//Æò±Õ
-		D sigma_squared = 0;//ºĞ»ê
-		D sigma = 0;//Ç¥ÁØ ÆíÂ÷
+		D m = 0;//í‰ê· 
+		D sigma_squared = 0;//ë¶„ì‚°
+		D sigma = 0;//í‘œì¤€ í¸ì°¨
 
 		m = sum_arr(arr, arr[(int)size]);
 		m /= size;
@@ -123,9 +123,9 @@ D standard_deviation(D * arr, double size, int seed)
 
 		
 		printf("Seed : %d\n", seed);
-		printf("Æò±Õ = %.5lf\n", m);
-		printf("ºĞ»ê = %.5lf\n", sigma_squared);
-		printf("Ç¥ÁØ ÆíÂ÷ = %.5lf\n\n", sigma);
+		printf("í‰ê·  = %.5lf\n", m);
+		printf("ë¶„ì‚° = %.5lf\n", sigma_squared);
+		printf("í‘œì¤€ í¸ì°¨ = %.5lf\n\n", sigma);
 		
 		if (sigma > largest[0]) { largest[0] = sigma; largest[1] = seed; }
 		if (sigma < least[0]) { least[0] = sigma; least[1] = seed; }
@@ -133,13 +133,13 @@ D standard_deviation(D * arr, double size, int seed)
 
 		return sigma;
 	}
-	//Ç¥ÁØ ÆíÂ÷ ÇÔ¼ö
+	//í‘œì¤€ í¸ì°¨ í•¨ìˆ˜
 
 D standard_deviation_s(D* arr, double size)
 {
-	D m = 0;//Æò±Õ
-	D sigma_squared = 0;//ºĞ»ê
-	D sigma = 0;//Ç¥ÁØ ÆíÂ÷
+	D m = 0;//í‰ê· 
+	D sigma_squared = 0;//ë¶„ì‚°
+	D sigma = 0;//í‘œì¤€ í¸ì°¨
 
 	m = sum_arr(arr, arr[(int)size]);
 	m /= size;
@@ -163,7 +163,7 @@ void main()
 	D* sigma_arr = (D*)malloc(sizeof(D) * (SEED_MAX - SEED_MIN + 2));
 	D* arr = NULL;
 	D meta_standard_deviation = 0;
-	D m_sigma = 0;//Ç¥ÁØ ÆíÂ÷µéÀÇ Æò±Õ
+	D m_sigma = 0;//í‘œì¤€ í¸ì°¨ë“¤ì˜ í‰ê· 
 
 	least[0] = SIZE_SQUARED;
 
@@ -174,9 +174,9 @@ void main()
 		printf("\n\n");
 		for (int i = SEED_MIN; i <= SEED_MAX; i++)
 		{
-			arr = population(i);//¸ğÁı´Ü »ı¼º
-			sigma_arr[i - SEED_MIN] = standard_deviation(arr, arr[SIZE_SQUARED], i);//¸ğÁı´ÜÀÇ Ç¥ÁØ ÆíÂ÷
-			//printf("%.10lf\n", sigma_arr[i - SEED_MIN]);//°¢°¢ÀÇ Ç¥ÁØ ÆíÂ÷ Ãâ·Â
+			arr = population(i);//ëª¨ì§‘ë‹¨ ìƒì„±
+			sigma_arr[i - SEED_MIN] = standard_deviation(arr, arr[SIZE_SQUARED], i);//ëª¨ì§‘ë‹¨ì˜ í‘œì¤€ í¸ì°¨
+			//printf("%.10lf\n", sigma_arr[i - SEED_MIN]);//ê°ê°ì˜ í‘œì¤€ í¸ì°¨ ì¶œë ¥
 			sigma_arr[SEED_MAX - SEED_MIN + 1]++;
 			//printf("In progress %d / %d\r", i - SEED_MIN + 1, SEED_MAX - SEED_MIN + 1);
 			free(arr);
@@ -190,10 +190,10 @@ void main()
 		meta_standard_deviation = standard_deviation_s(sigma_arr, sigma_arr[SEED_MAX - SEED_MIN + 1]);
 
 		printf("\n\nSeed : %d ~ %d\n", SEED_MIN, SEED_MAX);
-		printf("Ç¥ÁØ ÆíÂ÷ÀÇ Æò±Õ = %.10lf\n", m_sigma);
-		printf("¸ŞÅ¸ Ç¥ÁØ ÆíÂ÷ = %.10lf\n", meta_standard_deviation);
-		printf("Ç¥ÁØ ÆíÂ÷ÀÇ ÃÖ¼Ú°ª = %.10lf, Seed : %.lf\n", least[0], least[1]);
-		printf("Ç¥ÁØ ÆíÂ÷ÀÇ ÃÖ´ñ°ª = %.10lf, Seed : %.lf\n", largest[0], largest[1]);
+		printf("í‘œì¤€ í¸ì°¨ì˜ í‰ê·  = %.10lf\n", m_sigma);
+		printf("ë©”íƒ€ í‘œì¤€ í¸ì°¨ = %.10lf\n", meta_standard_deviation);
+		printf("í‘œì¤€ í¸ì°¨ì˜ ìµœì†Ÿê°’ = %.10lf, Seed : %.lf\n", least[0], least[1]);
+		printf("í‘œì¤€ í¸ì°¨ì˜ ìµœëŒ“ê°’ = %.10lf, Seed : %.lf\n", largest[0], largest[1]);
 	}
 
 	free(sigma_arr);
