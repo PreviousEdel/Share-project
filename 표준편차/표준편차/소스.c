@@ -157,6 +157,7 @@ D standard_deviation_s(D* arr, double size)
 
 	return sigma;
 }
+	//메타 표준 편차 함수
 
 void main()
 {
@@ -176,9 +177,8 @@ void main()
 		{
 			arr = population(i);//모집단 생성
 			sigma_arr[i - SEED_MIN] = standard_deviation(arr, arr[SIZE_SQUARED], i);//모집단의 표준 편차
-			//printf("%.10lf\n", sigma_arr[i - SEED_MIN]);//각각의 표준 편차 출력
 			sigma_arr[SEED_MAX - SEED_MIN + 1]++;
-			//printf("In progress %d / %d\r", i - SEED_MIN + 1, SEED_MAX - SEED_MIN + 1);
+			//printf("In progress %d / %d\r", i - SEED_MIN + 1, SEED_MAX - SEED_MIN + 1);//프로그래스 바
 			free(arr);
 		}
 
