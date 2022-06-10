@@ -1,0 +1,3 @@
+﻿  ver1.0.c
+C:\Users\EdelKatze\source\repos\Matrix Operation\Matrix Operation\ver1.0.c(159,7): warning C4101: 'trash' :참조되지 않은 지역 변수입니다.
+  Matrix Operation.vcxproj -> C:\Users\EdelKatze\source\repos\Matrix Operation\Debug\Matrix Operation ver.1.0.exe
